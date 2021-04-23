@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://chatbotregistry11.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_c601989736eb402688ddb3697a1d6ee2 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_0424b6386581413fb9b38460ae7dc69e }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1b093c2244654fbcadc350870f370b5f }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_80a0169bb52e414ba3e976ac35d60069 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_c601989736eb402688ddb3697a1d6ee2 }}/project_chatbotnjw:${{ github.sha }}
+        tags: ${{ secrets.AzureAppService_ContainerUsername_1b093c2244654fbcadc350870f370b5f }}/project_cc2:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'NJWsChatbot'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c24e4a23689b4ec2b15cc8e9af2c4991 }}
-        images: 'chatbotregistry11.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c601989736eb402688ddb3697a1d6ee2 }}/project_chatbotnjw:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f22a186ba3bd4c9bb8a9266af376d240 }}
+        images: 'chatbotregistry11.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1b093c2244654fbcadc350870f370b5f }}/project_cc2:${{ github.sha }}'
